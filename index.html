@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071426">
+  <title>足球视频数据统计台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">FOOTBALL VIDEO ANALYSIS</p>
+      <h1>足球视频数据统计台</h1>
+    </div>
+    <div class="header-actions">
+      <span id="saveStatus" class="save-status">已自动保存</span>
+      <button id="resetButton" class="button button-ghost" type="button">清空本场</button>
+      <button id="exportButton" class="button button-primary" type="button">导出 Excel</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="scoreboard" aria-label="比赛记分牌">
+      <article class="team-card team-one">
+        <label for="team1Name">队伍 1</label>
+        <input id="team1Name" class="team-name" value="队伍1" maxlength="20" aria-label="队伍1名称">
+        <div id="team1Score" class="score">0</div>
+        <span class="score-label">进球</span>
+      </article>
+
+      <article class="match-center">
+        <span>视频时间</span>
+        <strong id="matchClock">00:00</strong>
+        <b>VS</b>
+        <div class="clock-actions">
+          <button id="clockToggle" class="mini-button" type="button">开始</button>
+          <button id="clockReset" class="mini-button" type="button">归零</button>
+        </div>
+      </article>
+
+      <article class="team-card team-two">
+        <label for="team2Name">队伍 2</label>
+        <input id="team2Name" class="team-name" value="队伍2" maxlength="20" aria-label="队伍2名称">
+        <div id="team2Score" class="score">0</div>
+        <span class="score-label">进球</span>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <div class="section-heading">
+        <div>
+          <div class="title-line"><span class="live-dot"></span><h2>人工校正数据</h2><span class="mode-tag">本地自动保存</span></div>
+          <p>点击 + / − 修正识别结果；数值不会低于 0。</p>
+        </div>
+        <div class="quick-actions">
+          <button id="undoButton" class="button button-ghost" type="button" disabled>撤销上一步</button>
+        </div>
+      </div>
+
+      <div class="team-columns" aria-live="polite">
+        <div class="column-title team-one-color"><span id="team1ColumnName">队伍1</span><small>按键 1–9 增加</small></div>
+        <div class="column-title team-two-color"><span id="team2ColumnName">队伍2</span><small>Shift + 1–9 增加</small></div>
+      </div>
+      <div id="statsGrid" class="stats-grid"></div>
+    </section>
+
+    <section class="event-panel">
+      <div class="section-heading compact">
+        <div>
+          <h2>最近操作</h2>
+          <p>导出的“操作明细”工作表会保留完整校正记录。</p>
+        </div>
+        <span id="eventCount" class="event-count">0 条</span>
+      </div>
+      <div id="eventList" class="event-list"><p class="empty-state">还没有操作记录</p></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
