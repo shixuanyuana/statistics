@@ -15,7 +15,6 @@
     </div>
     <div class="header-actions">
       <span id="saveStatus" class="save-status">已自动保存</span>
-      <button id="resetButton" class="button button-ghost" type="button">清空本场</button>
       <button id="exportButton" class="button button-primary" type="button">导出 Excel</button>
     </div>
   </header>
@@ -30,12 +29,12 @@
       </article>
 
       <article class="match-center">
-        <span>视频时间</span>
+        <span id="matchPhase">等待开场</span>
         <strong id="matchClock">00:00</strong>
         <b>VS</b>
         <div class="clock-actions">
-          <button id="clockToggle" class="mini-button" type="button">开始</button>
-          <button id="clockReset" class="mini-button" type="button">归零</button>
+          <button id="clockToggle" class="mini-button" type="button">开始计时</button>
+          <button id="clockEnd" class="mini-button" type="button">结束计时</button>
         </div>
       </article>
 
@@ -59,8 +58,8 @@
       </div>
 
       <div class="team-columns" aria-live="polite">
-        <div class="column-title team-one-color"><span id="team1ColumnName">队伍1</span><small>按键 1–9 增加</small></div>
-        <div class="column-title team-two-color"><span id="team2ColumnName">队伍2</span><small>Shift + 1–9 增加</small></div>
+        <div class="column-title team-one-color"><span id="team1ColumnName">队伍1</span><small>按键 1–7 增加</small></div>
+        <div class="column-title team-two-color"><span id="team2ColumnName">队伍2</span><small>Shift + 1–7 增加</small></div>
       </div>
       <div id="statsGrid" class="stats-grid"></div>
     </section>
@@ -68,12 +67,19 @@
     <section class="event-panel">
       <div class="section-heading compact">
         <div>
-          <h2>最近操作</h2>
-          <p>导出的“操作明细”工作表会保留完整校正记录。</p>
+          <h2>数据变动明细</h2>
+          <p>显示本场打点的实际时间、视频时间及修改前后数值。</p>
         </div>
         <span id="eventCount" class="event-count">0 条</span>
       </div>
-      <div id="eventList" class="event-list"><p class="empty-state">还没有操作记录</p></div>
+      <div class="event-table-wrap">
+        <table class="event-table">
+          <thead>
+            <tr><th>实际时间</th><th>视频时间</th><th>队伍</th><th>变动项目</th><th>操作</th><th>修改前</th><th>修改后</th></tr>
+          </thead>
+          <tbody id="eventList"><tr><td colspan="7" class="empty-state">还没有操作记录</td></tr></tbody>
+        </table>
+      </div>
     </section>
   </main>
 

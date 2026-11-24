@@ -78,12 +78,15 @@ h2 { margin: 0; font-size: 1.12rem; }
 .stat-label { display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 12px; background: #0c192b; border: 1px solid var(--line-soft); text-align: center; font-weight: 800; }
 .stat-label small { color: var(--muted); font-size: .72rem; font-weight: 500; margin-top: 4px; }
 .event-count { color: var(--muted); }
-.event-list { display: grid; gap: 6px; max-height: 260px; overflow: auto; }
-.event-item { display: grid; grid-template-columns: 78px 1fr auto; gap: 14px; padding: 10px 13px; border-radius: 8px; background: #0a1829; color: #c6d2e1; font-size: .9rem; }
-.event-item time { color: var(--muted); font-variant-numeric: tabular-nums; }
+.event-table-wrap { max-height: 360px; overflow: auto; border: 1px solid var(--line-soft); border-radius: 10px; }
+.event-table { width: 100%; border-collapse: collapse; min-width: 780px; font-size: .9rem; }
+.event-table th { position: sticky; top: 0; z-index: 1; background: #10223a; color: #a9bad0; text-align: left; padding: 12px 14px; font-size: .78rem; }
+.event-table td { padding: 11px 14px; border-top: 1px solid var(--line-soft); color: #c6d2e1; }
+.event-table tbody tr:nth-child(even) { background: rgba(10, 24, 41, .65); }
+.event-table time { color: var(--muted); font-variant-numeric: tabular-nums; }
 .event-change.plus { color: var(--team-1); }
 .event-change.minus { color: var(--danger); }
-.empty-state { color: var(--muted); text-align: center; padding: 20px; margin: 0; }
+.empty-state { color: var(--muted) !important; text-align: center !important; padding: 24px !important; margin: 0; }
 .toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); background: #eff6ff; color: #081425; padding: 11px 18px; border-radius: 9px; font-weight: 700; opacity: 0; pointer-events: none; transition: .2s; z-index: 40; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
@@ -106,6 +109,5 @@ h2 { margin: 0; font-size: 1.12rem; }
   .stat-label { font-size: .85rem; }
   .stat-label small, .column-title small { display: none; }
   .section-heading { align-items: flex-start; }
-  .event-item { grid-template-columns: 65px 1fr; }
-  .event-change { grid-column: 2; }
+  .event-table-wrap { max-height: 320px; }
 }
